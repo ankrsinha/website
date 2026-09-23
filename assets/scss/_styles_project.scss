@@ -38,6 +38,327 @@
     }
 }
 
+.td-home {
+    overflow-x: hidden;
+
+    .td-outer,
+    .td-main {
+        padding: 0;
+    }
+
+    // td-outer has no horizontal padding on the landing page, so the footer
+    // must not use the negative margins needed by the Docs layout.
+    .tekton-footer {
+        margin-right: 0;
+        margin-left: 0;
+    }
+}
+
+.td-home .td-main .landing-hero {
+    // Override Docsy's generic `main section` padding. The landing hero is
+    // intentionally closer to the navigation, matching the reference.
+    padding: 32px 1.5rem 3rem;
+    color: #172033;
+    font-family: $td-fonts-serif;
+    text-align: center;
+
+    &__mark {
+        display: block;
+        width: 6rem;
+        height: 6rem;
+        margin: 0 auto 1.25rem;
+        object-fit: contain;
+    }
+
+    h1 {
+        margin: 0;
+        color: #172033;
+        font-size: clamp(2.25rem, 3vw, 3rem);
+        font-weight: 700;
+        letter-spacing: -.045em;
+        line-height: 1.08;
+    }
+
+    &__intro {
+        max-width: 56rem;
+        margin: 1rem auto 0;
+        color: #536174;
+        font-size: 1.25rem;
+        line-height: 1.45;
+    }
+
+    &__actions {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: .75rem;
+        margin: 2rem auto;
+    }
+}
+
+.landing-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 0;
+    min-height: 0;
+    padding: .75rem 1.75rem;
+    border: 2px solid transparent;
+    border-radius: 999px;
+    font-size: 1rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: background-color .2s ease-in, border-color .2s ease-in;
+
+    &:hover,
+    &:focus {
+        text-decoration: none;
+    }
+
+    &:focus-visible {
+        outline: 3px solid rgba(0, 16, 159, .25);
+        outline-offset: 3px;
+    }
+
+    &--primary {
+        color: #fff;
+        background: $primary;
+
+        &:hover,
+        &:focus {
+            color: #fff;
+            background: #1729bc;
+        }
+    }
+
+    &--secondary {
+        color: $primary;
+        background: #fff;
+        border-color: #cbd5e1;
+
+        &:hover,
+        &:focus {
+            color: $primary;
+            border-color: $primary;
+            background: #f4f6ff;
+        }
+    }
+}
+
+.landing-pipeline {
+    width: 100%;
+    max-width: 28rem;
+    margin: 0 auto 3rem;
+    padding: 1.25rem 1.5rem 1rem;
+    text-align: left;
+    background: #fbfcff;
+    border: 1px solid #dce4ef;
+    border-radius: 1rem;
+
+    &__label {
+        display: block;
+        margin-bottom: .75rem;
+        color: $primary;
+        font-size: .75rem;
+        font-weight: 700;
+        letter-spacing: .12em;
+        text-transform: uppercase;
+    }
+
+    &__flow {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0;
+    }
+
+    &__task {
+        display: flex;
+        flex: 0 0 auto;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-width: 0;
+        min-width: 4.5rem;
+        gap: .375rem;
+        padding: .625rem .75rem;
+        border: 1.5px solid;
+        border-radius: .625rem;
+        font-size: .7rem;
+        font-weight: 600;
+        transition: transform .2s ease, box-shadow .2s ease;
+
+        &:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, .08);
+        }
+
+        i {
+            font-size: 1.125rem;
+        }
+
+        &--source { color: #2563eb; background: #eff6ff; border-color: #bfdbfe; }
+        &--build { color: #b45309; background: #fffbeb; border-color: #fde68a; }
+        &--test { color: #047857; background: #ecfdf5; border-color: #a7f3d0; }
+        &--deploy { color: #6d28d9; background: #f5f3ff; border-color: #ddd6fe; }
+    }
+
+    &__arrow {
+        flex: 0 0 auto;
+        color: #94a3b8;
+        margin: 0 .125rem;
+        font-size: 1.25rem;
+        line-height: 1;
+    }
+}
+
+.landing-trusted {
+    max-width: 81.25rem;
+    margin: 0 auto;
+    padding: 3.75rem 1.5rem 5.5rem;
+    border-top: 1px solid #e5e7eb;
+    font-family: $td-fonts-serif;
+    text-align: center;
+
+    h2 {
+        margin: 0 0 2rem;
+        color: #6b7280;
+        font-size: .875rem;
+        font-weight: 700;
+        letter-spacing: .14em;
+        text-transform: uppercase;
+    }
+
+    &__logos {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 2rem 2.75rem;
+
+        img {
+            width: 7.75rem;
+            height: 2.5rem;
+            object-fit: contain;
+        }
+    }
+}
+
+.landing-cncf {
+    // Keep the CNCF card visually associated with the footer. The reference
+    // layout leaves a compact 2rem gap here, rather than a separate section.
+    padding: 0 1.5rem 2rem;
+
+    &__card {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 2rem;
+        width: 100%;
+        max-width: 67.5rem;
+        min-height: 6.75rem;
+        margin: 0 auto;
+        padding: 1.25rem 2rem;
+        color: #536174;
+        background: #fbfcff;
+        border: 1px solid #dce4ef;
+        border-radius: 1.125rem;
+        font-family: $td-fonts-serif;
+        font-size: 1.125rem;
+        text-decoration: none;
+
+        &:hover,
+        &:focus {
+            color: #172033;
+            border-color: #b9c9df;
+            text-decoration: none;
+        }
+
+        img {
+            width: 16rem;
+            max-height: 3.25rem;
+            object-fit: contain;
+        }
+
+        strong {
+            color: #172033;
+        }
+    }
+}
+
+@media only screen and (max-width: $mobile-width) {
+    .td-home .td-main .landing-hero {
+        padding: 32px 1rem 3.5rem;
+
+        &__mark {
+            width: 5.5rem;
+            height: 5.5rem;
+        }
+
+        &__actions {
+            margin-top: 2rem;
+        }
+    }
+
+    .landing-button {
+        width: 100%;
+        max-width: 19rem;
+        min-height: 3.5rem;
+        font-size: 1rem;
+    }
+
+    .landing-pipeline {
+        padding: 1rem;
+
+        &__flow {
+            gap: .15rem;
+        }
+
+        &__task {
+            min-height: 4.25rem;
+            padding: .25rem;
+            font-size: .625rem;
+
+            i {
+                font-size: .875rem;
+            }
+        }
+
+        &__arrow {
+            font-size: 1.1rem;
+        }
+    }
+
+    .landing-trusted {
+        padding: 2.75rem 1rem 3.5rem;
+
+        &__logos {
+            gap: 1.25rem 1.5rem;
+
+            img {
+                width: 5.75rem;
+                height: 2rem;
+            }
+        }
+    }
+
+    .landing-cncf {
+        padding: 0 1rem 2rem;
+
+        &__card {
+            flex-direction: column;
+            gap: 1rem;
+            padding: 1.5rem;
+            font-size: 1rem;
+            text-align: center;
+
+            img {
+                width: 13rem;
+            }
+        }
+    }
+}
+
 /* Top nav bar background */
 
 .td-navbar-cover {
@@ -177,5 +498,485 @@ pre {
     a {
         color: inherit;
         text-decoration: underline;
+    }
+}
+
+@keyframes tekton-navbar-menu-in {
+    from {
+        opacity: 0;
+        transform: translateY(-.5rem);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes tekton-navbar-menu-out {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    to {
+        opacity: 0;
+        transform: translateY(-.5rem);
+    }
+}
+
+.tekton-navbar {
+    position: sticky;
+    top: 0;
+    z-index: 1030;
+    width: 100%;
+    min-height: 4rem;
+    padding: 0;
+    background: #fff;
+    border-bottom: 1px solid #e5e7eb;
+    box-shadow: 0 1px 2px rgba(15, 23, 42, .04);
+    font-family: $td-fonts-serif;
+
+    &__inner {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        max-width: 90rem;
+        min-height: 4rem;
+        margin: 0 auto;
+        padding: .75rem 1.5rem;
+    }
+
+    &__brand {
+        display: inline-flex;
+        flex: 0 0 auto;
+        align-items: center;
+        margin-right: 1.5rem;
+
+        img {
+            display: block;
+            width: 8.75rem;
+            height: 2.25rem;
+            object-fit: contain;
+        }
+    }
+
+    &__toggle {
+        margin-left: auto;
+        padding: .5rem;
+        border: 1px solid #cbd5e1;
+        border-radius: .375rem;
+
+        .navbar-toggler-icon {
+            width: 1.25rem;
+            height: 1.25rem;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Cpath stroke='%23334155' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+        }
+
+        &[aria-expanded="true"] .navbar-toggler-icon {
+            position: relative;
+            background-image: none;
+
+            &::before {
+                position: absolute;
+                inset: -.5rem 0 0;
+                color: #111827;
+                content: "×";
+                font-size: 2rem;
+                font-weight: 300;
+                line-height: 1;
+            }
+        }
+    }
+
+    .navbar-collapse {
+        align-items: center;
+        flex: 1 1 auto;
+    }
+
+    &__links {
+        align-items: center;
+        order: 0;
+        gap: .25rem;
+
+        .nav-link {
+            padding: .5rem .625rem;
+            color: #475569;
+            font-size: .875rem;
+            font-weight: 500;
+            line-height: 1.5;
+            white-space: nowrap;
+
+            &:hover,
+            &:focus,
+            &.active {
+                color: $primary;
+            }
+
+            &:focus-visible {
+                outline: 2px solid #3b82f6;
+                outline-offset: 2px;
+                border-radius: .25rem;
+            }
+        }
+    }
+
+    &__utilities {
+        display: flex;
+        align-items: center;
+        gap: .625rem;
+        margin-left: .625rem;
+    }
+
+    &__search {
+        position: relative;
+        order: 1;
+        width: 16rem;
+        margin-left: auto;
+
+        .td-search {
+            width: 100%;
+        }
+
+        .td-search-input {
+            height: 2.25rem;
+            padding: .5rem 4.75rem .5rem .75rem;
+            color: #475569;
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: .625rem;
+            box-shadow: none;
+            font-size: .875rem;
+            line-height: 1.5;
+
+            &:focus {
+                background: #fff;
+                border-color: #94a3b8;
+                box-shadow: 0 0 0 .2rem rgba(0, 16, 159, .12);
+            }
+        }
+
+        &-shortcut {
+            position: absolute;
+            top: 50%;
+            right: .5rem;
+            padding: .2rem .4rem;
+            color: #64748b;
+            background: #fff;
+            border: 1px solid #d8dee8;
+            border-radius: .3rem;
+            box-shadow: 0 1px 1px rgba(15, 23, 42, .04);
+            font-family: inherit;
+            font-size: .6875rem;
+            font-weight: 500;
+            letter-spacing: .03em;
+            line-height: 1;
+            pointer-events: none;
+            text-transform: uppercase;
+            transform: translateY(-50%);
+        }
+    }
+
+    &__version .nav-link {
+        padding: .5rem .625rem;
+        color: #475569;
+        font-size: .875rem;
+    }
+
+    &__icon,
+    &__star {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        color: #111827;
+        text-decoration: none;
+
+        &:hover,
+        &:focus {
+            color: $primary;
+            text-decoration: none;
+        }
+
+        &:focus-visible {
+            outline: 2px solid #3b82f6;
+            outline-offset: 2px;
+            border-radius: .25rem;
+        }
+    }
+
+    &__icon {
+        width: 2.25rem;
+        height: 2.25rem;
+        font-size: 1.5rem;
+    }
+
+    &__theme-control {
+        position: relative;
+    }
+
+    &__theme-toggle {
+        padding: 0;
+        background: transparent;
+        border: 0;
+        cursor: pointer;
+    }
+
+    &__theme-icon {
+        width: 1.5rem;
+        height: 1.5rem;
+        fill: none;
+        stroke: currentColor;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-width: 1.8;
+    }
+
+    &__theme-icon--dark,
+    &__theme-icon--system {
+        display: none;
+    }
+
+    &__theme-menu {
+        position: absolute;
+        top: calc(100% + .5rem);
+        right: 0;
+        z-index: 1031;
+        min-width: 8rem;
+        margin: 0;
+        padding: .25rem;
+        list-style: none;
+        background: #fff;
+        border: 1px solid #e2e8f0;
+        border-radius: .5rem;
+        box-shadow: 0 .625rem 1.5rem rgba(15, 23, 42, .14);
+
+        button {
+            position: relative;
+            display: block;
+            width: 100%;
+            padding: .45rem 1.75rem .45rem .625rem;
+            color: #334155;
+            background: transparent;
+            border: 0;
+            border-radius: .25rem;
+            font-family: inherit;
+            font-size: .8125rem;
+            text-align: left;
+            cursor: pointer;
+
+            &:hover,
+            &:focus {
+                color: #172033;
+                background: #f1f5f9;
+                outline: 0;
+            }
+
+        }
+    }
+
+    &__star {
+        gap: .3rem;
+        padding: .3rem .5rem;
+        color: #374151;
+        font-size: .8125rem;
+        font-weight: 600;
+        line-height: 1;
+        border: 1px solid #d1d5db;
+        border-radius: .375rem;
+        box-shadow: 0 1px 1px rgba(0, 0, 0, .04);
+    }
+}
+
+.tekton-footer {
+    margin: 0 -15px;
+    padding: 1.5rem 1rem 1rem;
+    color: #6b7280;
+    background: #f8fafc;
+    border-top: 1px solid #e5e7eb;
+    font-family: $td-fonts-serif;
+    text-align: center;
+
+    &__links {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 1.25rem;
+        margin-bottom: .75rem;
+
+        a {
+            color: #6b7280;
+            font-size: .875rem;
+            text-decoration: none;
+
+            &:hover,
+            &:focus {
+                color: $primary;
+                text-decoration: underline;
+            }
+        }
+    }
+
+    &__cncf,
+    &__legal {
+        margin: 0;
+        font-size: .75rem;
+        line-height: 1.5;
+    }
+
+    &__legal {
+        max-width: 72rem;
+        margin: .5rem auto 0;
+        font-size: .7rem;
+    }
+
+    a {
+        color: inherit;
+        text-decoration: underline;
+
+        &:hover,
+        &:focus {
+            color: $primary;
+        }
+    }
+}
+
+@media only screen and (max-width: 1199px) {
+    .tekton-navbar {
+        &__brand {
+            margin-right: .75rem;
+
+            img {
+                width: 7.75rem;
+            }
+        }
+
+        &__links .nav-link {
+            padding-right: .4rem;
+            padding-left: .4rem;
+            font-size: .875rem;
+        }
+
+        &__search {
+            width: 12rem;
+        }
+    }
+}
+
+@media only screen and (max-width: $mobile-width) {
+    .tekton-navbar {
+        min-height: 4rem;
+
+        &__inner {
+            position: relative;
+            min-height: 4rem;
+            padding: .625rem 1rem;
+            flex-wrap: wrap;
+        }
+
+        .navbar-collapse {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            left: 0;
+            z-index: 1;
+
+            &.show,
+            &.collapsing {
+                display: flex;
+                flex-direction: column;
+                align-items: stretch;
+                height: auto !important;
+                min-height: calc(100vh - 4rem);
+                padding: 3.5rem 1rem 0;
+                overflow-y: auto;
+                background: #fff;
+            }
+
+            &.collapsing {
+                overflow: hidden;
+                will-change: opacity, transform;
+            }
+        }
+
+        &__toggle[aria-expanded="false"] ~ .navbar-collapse.collapsing {
+            animation: tekton-navbar-menu-out .16s ease-in both;
+            opacity: 0;
+        }
+
+        &__toggle[aria-expanded="true"] ~ .navbar-collapse {
+            animation: tekton-navbar-menu-in .22s cubic-bezier(.16, 1, .3, 1) both;
+            opacity: 1;
+        }
+
+        &__links {
+            flex-direction: column;
+            align-items: stretch;
+            order: 1;
+            padding: .75rem 0;
+            gap: 0;
+
+            .nav-link {
+                position: relative;
+                padding: .5rem;
+                font-size: .875rem;
+                text-align: left;
+            }
+
+            .nav-item:not(:last-child) .nav-link {
+                &::after {
+                    position: absolute;
+                    right: .5rem;
+                    color: #64748b;
+                    content: "›";
+                    font-size: 1.5rem;
+                    font-weight: 300;
+                    line-height: 1;
+                }
+            }
+        }
+
+        &__utilities {
+            order: 1;
+            margin-left: auto;
+
+            .tekton-navbar__star,
+            .tekton-navbar__version {
+                display: none;
+            }
+        }
+
+        &__search {
+            order: 0;
+            width: 100%;
+            margin: 0;
+
+            .td-search__icon {
+                display: none;
+            }
+
+            .td-search-input {
+                padding-left: .75rem;
+            }
+        }
+
+        &__toggle {
+            order: 2;
+            margin-left: .5rem;
+            padding: .5rem;
+            border: 0;
+            border-radius: 0;
+        }
+    }
+
+    .tekton-footer {
+        margin-right: -15px;
+        margin-left: -15px;
+        padding: 1.5rem 1rem 1rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .tekton-navbar__toggle ~ .navbar-collapse {
+        animation: none !important;
     }
 }
