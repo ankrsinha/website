@@ -46,12 +46,26 @@
       <a class="tekton-navbar__icon" href="https://join.slack.com/t/tektoncd/shared_invite/zt-1z8ctzsyv-wLXWwA2Rl3AOhcNGqpWRUw" target="_blank" rel="noreferrer" aria-label="Join the Tekton Slack workspace">
         <i class="fab fa-slack" aria-hidden="true"></i>
       </a>
-      <span class="tekton-navbar__icon tekton-navbar__theme" aria-hidden="true">
-        <svg viewBox="0 0 24 24" focusable="false">
-          <circle cx="12" cy="12" r="4"></circle>
-          <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"></path>
-        </svg>
-      </span>
+      <div class="tekton-navbar__theme-control">
+        <button class="tekton-navbar__icon tekton-navbar__theme-toggle" type="button" aria-label="Change theme" aria-expanded="false" aria-haspopup="menu">
+          <svg class="tekton-navbar__theme-icon tekton-navbar__theme-icon--light" viewBox="0 0 24 24" focusable="false" aria-hidden="true">
+            <circle cx="12" cy="12" r="4"></circle>
+            <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"></path>
+          </svg>
+          <svg class="tekton-navbar__theme-icon tekton-navbar__theme-icon--dark" viewBox="0 0 24 24" focusable="false" aria-hidden="true">
+            <path d="M20.35 15.35A9 9 0 0 1 8.65 3.65 9 9 0 1 0 20.35 15.35Z"></path>
+          </svg>
+          <svg class="tekton-navbar__theme-icon tekton-navbar__theme-icon--system" viewBox="0 0 24 24" focusable="false" aria-hidden="true">
+            <path d="M12 3a9 9 0 1 0 0 18V3Z"></path>
+            <path d="M12 3a9 9 0 0 1 0 18"></path>
+          </svg>
+        </button>
+        <ul class="tekton-navbar__theme-menu" role="menu" aria-label="Theme" hidden>
+          <li role="none"><button type="button" role="menuitem">Light</button></li>
+          <li role="none"><button type="button" role="menuitem">Dark</button></li>
+          <li role="none"><button type="button" role="menuitem">System</button></li>
+        </ul>
+      </div>
     </div>
   </div>
 </nav>

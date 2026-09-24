@@ -7,7 +7,8 @@
 {{ $jsSearch := resources.Get "js/search.js" | resources.ExecuteAsTemplate "js/search.js" .Site.Home }}
 {{ $jsAnchor := resources.Get "js/anchor.js" }}
 {{ $jsNavbarSearch := resources.Get "js/navbar-search.js" }}
-{{ $js := (slice $jsBase $jsSearch $jsAnchor $jsNavbarSearch) | resources.Concat "js/main.js" }}
+{{ $jsNavbarTheme := resources.Get "js/navbar-theme.js" }}
+{{ $js := (slice $jsBase $jsSearch $jsAnchor $jsNavbarSearch $jsNavbarTheme) | resources.Concat "js/main.js" }}
 {{ if .Site.IsServer }}
 <script src="{{ $js.RelPermalink }}"></script>
 {{ else }}

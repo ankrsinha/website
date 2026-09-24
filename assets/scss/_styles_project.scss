@@ -127,12 +127,11 @@
     font-size: 1rem;
     font-weight: 500;
     text-decoration: none;
-    transition: background-color .15s ease, border-color .15s ease, transform .15s ease;
+    transition: background-color .2s ease-in, border-color .2s ease-in;
 
     &:hover,
     &:focus {
         text-decoration: none;
-        transform: translateY(-1px);
     }
 
     &:focus-visible {
@@ -206,6 +205,12 @@
         border-radius: .625rem;
         font-size: .7rem;
         font-weight: 600;
+        transition: transform .2s ease, box-shadow .2s ease;
+
+        &:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, .08);
+        }
 
         i {
             font-size: 1.125rem;
@@ -301,8 +306,8 @@
 }
 
 @media only screen and (max-width: $mobile-width) {
-    .landing-hero {
-        padding: 2.75rem 1rem 3.5rem;
+    .td-home .td-main .landing-hero {
+        padding: 32px 1rem 3.5rem;
 
         &__mark {
             width: 5.5rem;
@@ -515,7 +520,6 @@ pre {
     }
 }
 
-/* Shared site chrome for the incremental landing-page refresh. */
 @keyframes tekton-navbar-menu-in {
     from {
         opacity: 0;
@@ -667,6 +671,8 @@ body > header {
             border: 1px solid #e2e8f0;
             border-radius: .625rem;
             box-shadow: none;
+            font-size: .875rem;
+            line-height: 1.5;
 
             &:focus {
                 background: #fff;
@@ -729,7 +735,18 @@ body > header {
         font-size: 1.5rem;
     }
 
-    &__theme svg {
+    &__theme-control {
+        position: relative;
+    }
+
+    &__theme-toggle {
+        padding: 0;
+        background: transparent;
+        border: 0;
+        cursor: pointer;
+    }
+
+    &__theme-icon {
         width: 1.5rem;
         height: 1.5rem;
         fill: none;
@@ -770,7 +787,7 @@ body > header {
 
         a {
             color: #6b7280;
-            font-size: .8125rem;
+            font-size: .875rem;
             text-decoration: none;
 
             &:hover,
