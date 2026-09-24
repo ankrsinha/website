@@ -41,7 +41,8 @@
 /* Static landing-page foundation (issue #742). Later issues insert their
    sections between the hero and trusted-by sections below. */
 .td-home {
-    overflow-x: hidden;
+    // clip avoids a scroll containment that breaks position:sticky
+    overflow-x: clip;
 
     .td-outer,
     .td-main {
@@ -53,6 +54,24 @@
     .tekton-footer {
         margin-right: 0;
         margin-left: 0;
+    }
+}
+
+// Docsy uses height:100vh + fixed .td-navbar. Sticky needs the document as
+// the scrollport, so prefer min-height.
+.td-outer {
+    height: auto;
+    min-height: 100vh;
+}
+
+// Drop Docsy’s fixed-navbar content offsets; sticky header stays in flow.
+.td-main main {
+    padding-top: 1.5rem;
+}
+
+.td-sidebar {
+    @media only screen and (min-width: #{$mobile-width + 1}) {
+        padding-top: 1rem;
     }
 }
 
@@ -521,10 +540,16 @@ pre {
     }
 }
 
-.tekton-navbar {
+// Sticky on body > header (Docsy layout sibling of .td-outer). Sticky on the
+// nested nav alone cannot stick because <header> is only as tall as the nav.
+body > header {
     position: sticky;
     top: 0;
     z-index: 1030;
+}
+
+.tekton-navbar {
+    position: relative;
     width: 100%;
     min-height: 4rem;
     padding: 0;
